@@ -3,151 +3,533 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Galileo Space Research - Exploring the universe through satellite communication and deep space analysis">
   <link rel="icon" type="image/jpg" href="logo.jpg">
   <title>Galileo Space Research</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Reset and Base Styles */
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  a {
-    text-decoration: none;
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-image: url(back.png);
-    background-size: cover;
-    color: white;
-  }
-  
-  header {
-    background: linear-gradient(90deg, purple, orange);
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #45a29e;
-  }
+    :root {
+      --primary-gradient: linear-gradient(90deg, #800080, #FFA500);
+      --accent-color: #45a29e;
+      --button-color: #6a5acd;
+      --text-light: #ffffff;
+      --text-dark: #000000;
+      --space-blue: #0b0c10;
+      --neon-teal: #66fcf1;
+    }
 
-  .logo-title {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 50px; /* Adjust size of the logo */
-    height: auto;
-    margin-right: 15px;
-    border-radius: 50%;
-  }
-  
-  
-  header h1 {
-    font-size: 24px;
-    color: #66fcf1;
-  }
-  
-  .hero {
-    background: url('https://www.nasa.gov/sites/default/files/thumbnails/image/edu_what_is_nasa_banner.jpg') no-repeat center center/cover;
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .hero h2 {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    font-size: 36px;
-    color: #ffffff;
-  }
-  
-  section {
-    padding: 40px;
-  }
-  
-  section h3 {
-    color: #45a29e;
-    margin-bottom: 20px;
-  }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-  .email {
-            color: white;
-  }
-  
-  section ul {
-    margin-top: 10px;
-    list-style: disc;
-    padding-left: 20px;
-  }
-  
-  footer {
-    color: white;
-    background: linear-gradient(90deg, purple, orange);
-    padding: 20px 40px;
-    display: flex;
-    border-bottom: 2px solid #45a29e;
-  }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--space-blue);
+      color: var(--text-light);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .but {
-    margin: 10px;
-    margin-left: 600px;
-    width: 150px;
-  }
+    /* Header - All Devices */
+    header {
+      background: var(--primary-gradient);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--accent-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-  .button {
-    display: block;
-    align-items: center;
-    text-align: center;
-    height: 25px;
-    border-radius: 30px;
-    color: #ffffff;
-    margin: 10px;
-    font-size: large;
-    background-color: slateblue;
-  }
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--neon-teal);
+    }
+
+    header h1 {
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      color: var(--neon-teal);
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://www.nasa.gov/sites/default/files/thumbnails/image/edu_what_is_nasa_banner.jpg') no-repeat center center/cover;
+      height: 60vh;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: clamp(1rem, 5vw, 2rem);
+      border-radius: 1rem;
+      max-width: 90%;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero h2 {
+      font-size: clamp(1.25rem, 5vw, 2.25rem);
+      color: var(--text-light);
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: clamp(1rem, 5vw, 2.5rem);
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    section {
+      margin-bottom: clamp(1.5rem, 5vw, 2.5rem);
+      padding: clamp(1rem, 3vw, 1.5rem);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    section h3 {
+      color: var(--neon-teal);
+      margin-bottom: clamp(0.75rem, 3vw, 1.25rem);
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      font-weight: 700;
+    }
+
+    section p {
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
+
+    section ul {
+      margin: 1rem 0;
+      padding-left: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    section li {
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+      position: relative;
+    }
+
+    section li::before {
+      content: '🚀';
+      position: absolute;
+      left: -1.5rem;
+    }
+
+    /* Button */
+    .blog-button {
+      text-align: center;
+      margin: clamp(1.5rem, 5vw, 2.5rem) 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+      background-color: var(--button-color);
+      color: var(--text-light);
+      border-radius: 2rem;
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+      min-height: 44px; /* Minimum touch target for accessibility */
+    }
+
+    .button:hover,
+    .button:focus {
+      background-color: #5a4acd;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(106, 90, 205, 0.4);
+      border-color: var(--neon-teal);
+    }
+
+    .button:active {
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-gradient);
+      padding: clamp(1rem, 3vw, 1.5rem);
+      text-align: center;
+      border-top: 2px solid var(--accent-color);
+      margin-top: auto;
+    }
+
+    footer p {
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      margin: 0;
+    }
+
+    /* ============================================
+       DEVICE-SPECIFIC ADJUSTMENTS
+    ============================================ */
+
+    /* Smart Watch (up to 300px) */
+    @media (max-width: 300px) {
+      header {
+        padding: 0.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .logo {
+        width: 2rem;
+        height: 2rem;
+      }
+      
+      .hero {
+        height: 40vh;
+        min-height: 200px;
+      }
+      
+      .hero-content {
+        padding: 0.75rem;
+        max-width: 95%;
+      }
+      
+      .hero h2 {
+        font-size: 0.9rem;
+        line-height: 1.3;
+      }
+      
+      main {
+        padding: 0.5rem;
+      }
+      
+      section {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      
+      section h3 {
+        font-size: 1rem;
+      }
+      
+      section p,
+      section li {
+        font-size: 0.8rem;
+      }
+      
+      .button {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+      }
+    }
+
+    /* Phone (301px - 600px) */
+    @media (min-width: 301px) and (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0.75rem;
+      }
+      
+      .logo-title {
+        justify-content: center;
+        width: 100%;
+      }
+      
+      .hero {
+        height: 50vh;
+      }
+      
+      main {
+        padding: 1rem;
+      }
+      
+      section {
+        padding: 1.25rem;
+      }
+      
+      .button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+
+    /* Tablet (601px - 900px) */
+    @media (min-width: 601px) and (max-width: 900px) {
+      header {
+        padding: 1.25rem 2rem;
+      }
+      
+      .hero {
+        height: 55vh;
+      }
+      
+      main {
+        padding: 2rem;
+      }
+      
+      .content-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      
+      #about {
+        grid-column: 1 / -1;
+      }
+      
+      section {
+        margin-bottom: 0;
+      }
+    }
+
+    /* PC (901px - 1200px) */
+    @media (min-width: 901px) and (max-width: 1200px) {
+      header {
+        padding: 1.5rem 3rem;
+      }
+      
+      .hero {
+        height: 65vh;
+      }
+      
+      main {
+        padding: 3rem;
+      }
+      
+      .content-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+      
+      #about {
+        grid-column: 1 / -1;
+      }
+      
+      #projects {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* Large PC (1201px and above) */
+    @media (min-width: 1201px) {
+      header {
+        padding: 1.5rem 4rem;
+      }
+      
+      .hero {
+        height: 70vh;
+        max-height: 800px;
+      }
+      
+      main {
+        padding: 4rem;
+      }
+      
+      .content-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
+      
+      #about {
+        grid-column: 1 / -1;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      
+      .hero-content {
+        max-width: 800px;
+      }
+    }
+
+    /* Landscape Mode */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero {
+        height: 80vh;
+      }
+      
+      header {
+        position: static;
+      }
+      
+      .logo-title {
+        flex-direction: row;
+      }
+    }
+
+    /* High-DPI Screens */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .logo {
+        border-width: 3px;
+      }
+      
+      .button {
+        border-width: 3px;
+      }
+      
+      .hero-content {
+        backdrop-filter: blur(8px);
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .hero {
+        display: none;
+      }
+      
+      .button {
+        display: none;
+      }
+      
+      header,
+      footer {
+        background: white;
+        color: black;
+        border: 1px solid #ccc;
+      }
+    }
+
+    /* Animation for Loading */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    main {
+      animation: fadeIn 0.8s ease-out;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-title">
-      <img src="logo.jpg" alt="Logo" class="logo"> <!-- Optional: Replace with your rocket logo -->
-    <h1>Galileo Space Research</h1>
+      <img src="logo.jpg" alt="Galileo Space Research Logo" class="logo">
+      <h1>Galileo Space Research</h1>
+    </div>
   </header>
 
-  <div class="hero">
-    <h2>Exploring the Universe, One Discovery at a Time</h2>
+  <div class="hero" role="banner" aria-label="Space exploration background">
+    <div class="hero-content">
+      <h2>Exploring the Universe, One Discovery at a Time</h2>
+    </div>
   </div>
 
-  <section id="about">
-    <h3>About My Research</h3>
-    <p>This Galileo space research lab focuses on exploring new frontiers in satellite communication, extraterrestrial studies, and deep space signal analysis.</p>
-  </section>
+  <main>
+    <div class="content-grid">
+      <section id="about">
+        <h3>About My Research</h3>
+        <p>This Galileo space research lab focuses on exploring new frontiers in satellite communication, extraterrestrial studies, and deep space signal analysis.</p>
+        <p>Our mission is to advance human understanding of the cosmos through innovative research and technology development.</p>
+      </section>
 
-  <section id="projects">
-    <h3>Current Projects</h3>
-    <ul>
-      <li>CubeSat Signal Reception Analysis</li>
-      <li>Deep Space Object Tracking</li>
-      <li>Alien Life Detection Algorithms</li>
-    </ul>
-  </section>
+      <section id="projects">
+        <h3>Current Projects</h3>
+        <ul>
+          <li>CubeSat Signal Reception Analysis</li>
+          <li>Deep Space Object Tracking</li>
+          <li>Alien Life Detection Algorithms</li>
+          <li>Space Weather Monitoring</li>
+          <li>Exoplanet Atmospheric Studies</li>
+        </ul>
+      </section>
+    </div>
 
-  <div class="but">
-    <a href="https://galileo-src.blogspot.com" class="button">Our Blog</a>
-  </div>
+    <div class="blog-button">
+      <a href="https://galileo-src.blogspot.com" class="button" target="_blank" rel="noopener noreferrer">
+        🚀 Visit Our Blog
+      </a>
+    </div>
+  </main>
 
-  
-  
   <footer>
-    
-        <p>&copy; 2025 Galileo Space Research</p>
-    
+    <p>&copy; 2025 Galileo Space Research. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Add responsive behavior enhancements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Adjust hero height based on viewport
+      function adjustHeroHeight() {
+        const hero = document.querySelector('.hero');
+        const vh = window.innerHeight * 0.01;
+        hero.style.setProperty('--vh', `${vh}px`);
+      }
+      
+      // Update on resize and orientation change
+      window.addEventListener('resize', adjustHeroHeight);
+      window.addEventListener('orientationchange', adjustHeroHeight);
+      adjustHeroHeight();
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
